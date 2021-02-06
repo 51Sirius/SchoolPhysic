@@ -133,9 +133,9 @@ def start():
         elif speed_entry.need_input:
             speed = give_par(speed_entry, event, speed)
         elif b_entry.need_input:
-            b = give_par(speed_entry, event, speed)
+            b = give_par(speed_entry, event, b)
         elif q_entry.need_input:
-            q = give_par(speed_entry, event, speed)
+            q = give_par(speed_entry, event, q)
         b = give_par(b_entry, event, b)
         q = give_par(q_entry, event, q)
         pg.display.update()
