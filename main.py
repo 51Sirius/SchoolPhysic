@@ -8,7 +8,7 @@ pg.display.set_caption('Physic Project')
 
 
 class Circle:
-    def __init__(self, color, fill=False):
+    def __init__(self, color, fill=False, pos=(400, 300)):
         self.color = color
         self.fill = fill
         self.radius = 1
@@ -16,9 +16,10 @@ class Circle:
         self.speed = 1
         self.B = 1
         self.q = 1
+        self.pos = pos
 
     def draw(self):
-
+        pg.draw.circle(display, self.color, self.pos, self.radius, width=2)
 
 
 
@@ -35,5 +36,6 @@ def start():
 
 
         pg.display.update()
+
 
 start()
