@@ -12,13 +12,10 @@ class Circle:
         self.color = color
         self.fill = fill
         self.radius = 1
-        self.mass = 1
-        self.speed = 1
-        self.B = 1
-        self.q = 1
         self.pos = pos
 
-    def draw(self):
+    def draw(self, mass=1, speed=1, b=1, q=1):
+        self.radius = mass*speed/(b*q)
         pg.draw.circle(display, self.color, self.pos, self.radius, width=2)
 
 
@@ -28,13 +25,17 @@ class Circle:
 
 def start():
     show_menu = True
+    circle = Circle((0, 0, 0))
+    mass = 1
+    speed = 1
+    b = 1
+    q = 1
     while show_menu:
         event = pg.event.poll()
         if event.type == pg.QUIT:
             s.exit()
         display.fill((255, 255, 255))
-
-
+        circle.draw(mass, speed, b, q)
         pg.display.update()
 
 
