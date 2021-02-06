@@ -1,10 +1,25 @@
 import pygame as pg
 import sys as s
 
-
 display = pg.display.set_mode((800, 600))
 pg.init()
 pg.display.set_caption('Physic Project')
+
+
+class Font:
+    def __init__(self, x, y, font_color=(0, 0, 0), font_size=30, font_type='Arial',
+                 message=None):
+        self.x = x
+        self.y = y
+        self.font_color = font_color
+        self.font_type = font_type
+        self.font_size = font_size
+        self.message = message
+
+    def draw_text(self):
+        font_type = pg.font.Font(self.font_type, self.font_size)
+        text = font_type.render(self.message, True, self.font_color)
+        display.blit(text, (self.x, self.y))
 
 
 class Entry_parameters:
@@ -63,9 +78,8 @@ class Circle:
         self.pos = pos
 
     def draw(self, mass=1, speed=1, b=1, q=1):
-        self.radius = mass*speed/(b*q)
+        self.radius = mass * speed / (b * q)
         pg.draw.circle(display, self.color, self.pos, self.radius, width=2)
-
 
 
 "R = mU/(Bq)"
