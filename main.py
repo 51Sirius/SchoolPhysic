@@ -125,9 +125,9 @@ def start():
         display.fill((255, 255, 255))
         circle.draw(mass, speed, b, q)
         mass_entry.draw(str(mass))
-        speed_entry.draw(str(mass))
-        b_entry.draw(str(mass))
-        q_entry.draw(str(mass))
+        speed_entry.draw(str(speed))
+        b_entry.draw(str(b))
+        q_entry.draw(str(q))
         if mass_entry.need_input:
             mass = give_par(mass_entry, event, mass)
         elif speed_entry.need_input:
