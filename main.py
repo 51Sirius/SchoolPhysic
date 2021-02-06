@@ -6,12 +6,23 @@ pg.init()
 pg.display.set_caption('Physic Project')
 
 
-def give_par(par: object):
+def give_par(par: object, event, text):
+    text = str(text)
     if par.need_input and event.type == pg.KEYDOWN:
         if event.unicode == '1' or event.unicode == '2' or event.unicode == '3' or event.unicode == '4' or event.unicode == '5' \
                 or event.unicode == '6' or event.unicode == '7' or event.unicode == '8' or event.unicode == '9' or event.unicode == '0' \
                 or event.unicode == '.':
-            pass
+            valid = True
+        else:
+            valid = False
+        if event.key == pg.K_BACKSPACE:
+            text = text[0:-1]
+            valid = True
+        elif valid:
+            if event.unicode == ',':
+                event.unicode = '.'
+            text += event.unicode
+    return int(text)
 
 
 class Font:
@@ -100,9 +111,9 @@ def start():
     show_menu = True
     circle = Circle((0, 0, 0))
     mass_entry = Entry_parameters(600, 100, 160, 50, 'Entry mass', 610, 110)
-    speed_entry = Entry_parameters(600, 200, 160, 50, 'Entry mass', 610, 210)
-    b_entry = Entry_parameters(600, 300, 160, 50, 'Entry mass', 610, 310)
-    q_entry = Entry_parameters(600, 400, 160, 50, 'Entry mass', 610, 410)
+    speed_entry = Entry_parameters(600, 200, 160, 50, 'Entry speed', 610, 210)
+    b_entry = Entry_parameters(600, 300, 160, 50, 'Entry B', 610, 310)
+    q_entry = Entry_parameters(600, 400, 160, 50, 'Entry q', 610, 410)
     mass = 1
     speed = 1
     b = 1
@@ -117,6 +128,16 @@ def start():
         speed_entry.draw(str(mass))
         b_entry.draw(str(mass))
         q_entry.draw(str(mass))
+        if mass_entry.need_input:
+            mass = give_par(mass_entry, event, mass)
+        elif speed_entry.need_input:
+            speed = give_par(speed_entry, event, speed)
+        elif b_entry.need_input:
+            b = give_par(speed_entry, event, speed)
+        elif q_entry.need_input:
+            q = give_par(speed_entry, event, speed)
+        b = give_par(b_entry, event, b)
+        q = give_par(q_entry, event, q)
         pg.display.update()
 
 
