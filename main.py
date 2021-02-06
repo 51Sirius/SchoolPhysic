@@ -15,12 +15,14 @@ def give_par(par: object, event, text):
             valid = True
         else:
             valid = False
-        if event.key == pg.K_BACKSPACE:
+        if event.key == pg.K_BACKSPACE and len(text) > 1:
             text = text[0:-1]
             valid = True
         elif valid:
             if event.unicode == ',':
                 event.unicode = '.'
+            if text == '1':
+                text = ''
             text += event.unicode
     return int(text)
 
@@ -123,7 +125,6 @@ def start():
         if event.type == pg.QUIT:
             s.exit()
         display.fill((255, 255, 255))
-        circle.draw(mass, speed, b, q)
         mass_entry.draw(str(mass))
         speed_entry.draw(str(speed))
         b_entry.draw(str(b))
@@ -136,6 +137,7 @@ def start():
             b = give_par(b_entry, event, b)
         elif q_entry.need_input:
             q = give_par(q_entry, event, q)
+        circle.draw(mass, speed, b, q)
         pg.display.update()
 
 
