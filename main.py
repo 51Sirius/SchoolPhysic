@@ -6,8 +6,16 @@ pg.init()
 pg.display.set_caption('Physic Project')
 
 
+def give_par(par: object):
+    if par.need_input and event.type == pg.KEYDOWN:
+        if event.unicode == '1' or event.unicode == '2' or event.unicode == '3' or event.unicode == '4' or event.unicode == '5' \
+                or event.unicode == '6' or event.unicode == '7' or event.unicode == '8' or event.unicode == '9' or event.unicode == '0' \
+                or event.unicode == '.':
+            pass
+
+
 class Font:
-    def __init__(self, x, y, font_color=(0, 0, 0), font_size=30, font_type='Arial',
+    def __init__(self, x, y, font_color=(0, 0, 0), font_size=30, font_type='20011.ttf',
                  message=None):
         self.x = x
         self.y = y
@@ -36,10 +44,10 @@ class Entry_parameters:
         self.font_color = (0, 247, 255)
         self.active_line_color = (26, 26, 176)
         self.font_size = 30
-        self.font_type = 'Arial'
+        self.font_type = '20011.ttf'
         self.line_color = (0, 0, 0)
 
-    def draw(self):
+    def draw(self, text):
         click = pg.mouse.get_pressed()
         mouse = pg.mouse.get_pos()
         if click[0] == 1 and self.x < mouse[0] < self.x + self.width and self.y < mouse[1] < self.y + self.height:
@@ -66,7 +74,10 @@ class Entry_parameters:
                                      [self.x + self.width, self.y + self.height], 8)
             right_line = pg.draw.line(display, self.line_color, [self.x + self.width, self.y],
                                       [self.x + self.width, self.y + self.height], 8)
-        text_font = Font(self.text_x, self.text_y, self.font_color, self.font_size, self.font_type, self.text)
+        if text == '1':
+            text_font = Font(self.text_x, self.text_y, self.font_color, self.font_size, self.font_type, self.text)
+        else:
+            text_font = Font(self.text_x, self.text_y, self.font_color, self.font_size, self.font_type, text)
         text_font.draw_text()
 
 
@@ -88,6 +99,10 @@ class Circle:
 def start():
     show_menu = True
     circle = Circle((0, 0, 0))
+    mass_entry = Entry_parameters(600, 100, 160, 50, 'Entry mass', 610, 110)
+    speed_entry = Entry_parameters(600, 200, 160, 50, 'Entry mass', 610, 210)
+    b_entry = Entry_parameters(600, 300, 160, 50, 'Entry mass', 610, 310)
+    q_entry = Entry_parameters(600, 400, 160, 50, 'Entry mass', 610, 410)
     mass = 1
     speed = 1
     b = 1
@@ -98,6 +113,10 @@ def start():
             s.exit()
         display.fill((255, 255, 255))
         circle.draw(mass, speed, b, q)
+        mass_entry.draw(str(mass))
+        speed_entry.draw(str(mass))
+        b_entry.draw(str(mass))
+        q_entry.draw(str(mass))
         pg.display.update()
 
 
