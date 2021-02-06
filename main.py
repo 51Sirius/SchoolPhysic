@@ -137,7 +137,6 @@ def start():
         elif q_entry.need_input:
             q = give_par(q_entry, event, q)
         pg.display.update()
-        print(mass_entry.need_input, speed_entry.need_input, b_entry.need_input, q_entry.need_input, sep='\n')
 
 
 start()
