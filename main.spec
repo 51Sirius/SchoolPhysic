@@ -23,7 +23,6 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='main',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
@@ -32,4 +31,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False , manifest='akespec')
+          console=False)
