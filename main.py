@@ -6,7 +6,7 @@ pg.init()
 pg.display.set_caption('Physic Project')
 
 
-def give_par(par: object, event, text):
+def give_par(par: object, event, text, name):
     text = str(text)
     if par.need_input and event.type == pg.KEYDOWN:
         if event.unicode == '1' or event.unicode == '2' or event.unicode == '3' or event.unicode == '4' or event.unicode == '5' \
@@ -15,9 +15,11 @@ def give_par(par: object, event, text):
             valid = True
         else:
             valid = False
-        if event.key == pg.K_BACKSPACE and len(text) > 1:
+        if event.key == pg.K_BACKSPACE and len(text) >= 1:
             text = text[0:-1]
             valid = True
+            if text == '':
+                return 1
         elif valid:
             if event.unicode == ',':
                 event.unicode = '.'
@@ -52,9 +54,9 @@ class Entry_parameters:
         self.text = text
         self.text_x = mess_x
         self.text_y = mess_y
-        self.bg_color = (94, 94, 94)
+        self.bg_color = (166, 228, 255)
         self.need_input = False
-        self.font_color = (0, 247, 255)
+        self.font_color = (0, 0, 0)
         self.active_line_color = (26, 26, 176)
         self.font_size = 30
         self.font_type = '20011.ttf'
@@ -124,19 +126,19 @@ def start():
         event = pg.event.poll()
         if event.type == pg.QUIT:
             s.exit()
-        display.fill((255, 255, 255))
+        display.fill((191, 191, 191))
         mass_entry.draw(str(mass))
         speed_entry.draw(str(speed))
         b_entry.draw(str(b))
         q_entry.draw(str(q))
         if mass_entry.need_input:
-            mass = give_par(mass_entry, event, mass)
+            mass = give_par(mass_entry, event, mass, 'mass')
         elif speed_entry.need_input:
-            speed = give_par(speed_entry, event, speed)
+            speed = give_par(speed_entry, event, speed, 'speed')
         elif b_entry.need_input:
-            b = give_par(b_entry, event, b)
+            b = give_par(b_entry, event, b, 'b')
         elif q_entry.need_input:
-            q = give_par(q_entry, event, q)
+            q = give_par(q_entry, event, q, 'q')
         circle.draw(mass, speed, b, q)
         pg.display.update()
 
