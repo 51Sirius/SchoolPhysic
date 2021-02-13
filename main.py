@@ -1,7 +1,7 @@
 import pygame as pg
 import sys as s
 
-display = pg.display.set_mode((800, 600))
+display = pg.display.set_mode((1000, 600))
 pg.init()
 pg.display.set_caption('Physic Project')
 
@@ -58,7 +58,7 @@ class Entry_parameters:
         self.need_input = False
         self.font_color = (0, 0, 0)
         self.active_line_color = (26, 26, 176)
-        self.font_size = 30
+        self.font_size = 25
         self.font_type = '20011.ttf'
         self.line_color = (0, 0, 0)
 
@@ -114,10 +114,10 @@ class Circle:
 def start():
     show_menu = True
     circle = Circle((0, 0, 0))
-    mass_entry = Entry_parameters(600, 100, 160, 50, 'Entry mass', 610, 110)
-    speed_entry = Entry_parameters(600, 200, 160, 50, 'Entry speed', 610, 210)
-    b_entry = Entry_parameters(600, 300, 160, 50, 'Entry B', 610, 310)
-    q_entry = Entry_parameters(600, 400, 160, 50, 'Entry q', 610, 410)
+    mass_entry = Entry_parameters(540, 100, 200, 50, 'Скорость', 550, 110)
+    speed_entry = Entry_parameters(540, 200, 200, 50, 'Масса', 550, 210)
+    b_entry = Entry_parameters(540, 300, 200, 50, 'Магнитная инд.', 550, 310)
+    q_entry = Entry_parameters(540, 400, 200, 50, 'Заряд частицы', 550, 410)
     mass = 1
     speed = 1
     b = 1
