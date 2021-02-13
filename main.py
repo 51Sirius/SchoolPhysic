@@ -6,6 +6,16 @@ pg.init()
 pg.display.set_caption('Physic Project')
 
 
+def coord_system():
+    color_line = (0, 0, 0)
+    x_line = pg.draw.line(display, color_line, [0, 300], [1000, 300], 2)
+    y_line = pg.draw.line(display, color_line, [500, 0], [500, 500], 2)
+    for i in range(200, 850, 50):
+        line = pg.draw.line(display, color_line, [i, 100], [i, 500], 1)
+    for j in range(100, 501, 50):
+        line = pg.draw.line(display, color_line, [200, j], [800, j], 1)
+
+
 def give_par(event, text):
     text = str(text)
     if event.type == pg.KEYDOWN:
@@ -145,6 +155,7 @@ def start():
             q = give_par(event, q)
         radius.draw_text(format(circle.radius, '.2f'))
         circle.draw(mass, speed, b, q)
+        coord_system()
         pg.display.update()
 
 
