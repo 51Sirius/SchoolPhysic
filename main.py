@@ -97,7 +97,7 @@ class Entry_parameters:
 
 
 class Circle:
-    def __init__(self, color, fill=False, pos=(400, 300)):
+    def __init__(self, color, fill=False, pos=(500, 300)):
         self.color = color
         self.fill = fill
         self.radius = 1
@@ -114,10 +114,10 @@ class Circle:
 def start():
     show_menu = True
     circle = Circle((0, 0, 0))
-    mass_entry = Entry_parameters(540, 100, 200, 50, 'Скорость', 550, 110)
-    speed_entry = Entry_parameters(540, 200, 200, 50, 'Масса', 550, 210)
-    b_entry = Entry_parameters(540, 300, 200, 50, 'Магнитная инд.', 550, 310)
-    q_entry = Entry_parameters(540, 400, 200, 50, 'Заряд частицы', 550, 410)
+    mass_entry = Entry_parameters(10, 540, 200, 50, 'Скорость', 20, 550)
+    speed_entry = Entry_parameters(220, 540, 200, 50, 'Масса', 230, 550)
+    b_entry = Entry_parameters(430, 540, 200, 50, 'Магнитная инд.', 440, 550)
+    q_entry = Entry_parameters(640, 540, 200, 50, 'Заряд частицы', 650, 550)
     mass = 1
     speed = 1
     b = 1
