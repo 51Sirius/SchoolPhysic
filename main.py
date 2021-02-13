@@ -6,7 +6,7 @@ pg.init()
 pg.display.set_caption('Physic Project')
 
 
-def give_par(par: object, event, text, name):
+def give_par(event, text):
     text = str(text)
     if event.type == pg.KEYDOWN:
         if event.unicode == '1' or event.unicode == '2' or event.unicode == '3' or event.unicode == '4' or event.unicode == '5' \
@@ -136,13 +136,13 @@ def start():
         b_entry.draw(str(b))
         q_entry.draw(str(q))
         if mass_entry.need_input:
-            mass = give_par(mass_entry, event, mass, 'mass')
+            mass = give_par(event, mass)
         elif speed_entry.need_input:
-            speed = give_par(speed_entry, event, speed, 'speed')
+            speed = give_par(event, speed)
         elif b_entry.need_input:
-            b = give_par(b_entry, event, b, 'b')
+            b = give_par(event, b)
         elif q_entry.need_input:
-            q = give_par(q_entry, event, q, 'q')
+            q = give_par(event, q)
         radius.draw_text(circle.radius)
         circle.draw(mass, speed, b, q)
         pg.display.update()
