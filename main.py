@@ -143,7 +143,7 @@ def start():
             b = give_par(event, b)
         elif q_entry.need_input:
             q = give_par(event, q)
-        radius.draw_text(circle.radius)
+        radius.draw_text(format(circle.radius, '.2f'))
         circle.draw(mass, speed, b, q)
         pg.display.update()
 
