@@ -39,9 +39,12 @@ class Font:
         self.font_size = font_size
         self.message = message
 
-    def draw_text(self):
+    def draw_text(self, ms=None):
         font_type = pg.font.Font(self.font_type, self.font_size)
-        text = font_type.render(self.message, True, self.font_color)
+        if ms is not None:
+            text = font_type.render(f'Радиус = {ms}', True, self.font_color)
+        else:
+            text = font_type.render(self.message, True, self.font_color)
         display.blit(text, (self.x, self.y))
 
 
@@ -114,10 +117,11 @@ class Circle:
 def start():
     show_menu = True
     circle = Circle((0, 0, 0))
-    mass_entry = Entry_parameters(10, 540, 200, 50, 'Скорость', 20, 550)
-    speed_entry = Entry_parameters(220, 540, 200, 50, 'Масса', 230, 550)
+    mass_entry = Entry_parameters(10, 540, 200, 50, 'Масса', 20, 550)
+    speed_entry = Entry_parameters(220, 540, 200, 50, 'Скорость', 230, 550)
     b_entry = Entry_parameters(430, 540, 200, 50, 'Магнитная инд.', 440, 550)
     q_entry = Entry_parameters(640, 540, 200, 50, 'Заряд частицы', 650, 550)
+    radius = Font(10, 20, (0, 0, 0), 30, message=f'Радиус = {circle.radius}')
     mass = 1
     speed = 1
     b = 1
@@ -139,6 +143,7 @@ def start():
             b = give_par(b_entry, event, b, 'b')
         elif q_entry.need_input:
             q = give_par(q_entry, event, q, 'q')
+        radius.draw_text(circle.radius)
         circle.draw(mass, speed, b, q)
         pg.display.update()
 
