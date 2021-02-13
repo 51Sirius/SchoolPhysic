@@ -8,7 +8,7 @@ pg.display.set_caption('Physic Project')
 
 def give_par(par: object, event, text, name):
     text = str(text)
-    if par.need_input and event.type == pg.KEYDOWN:
+    if event.type == pg.KEYDOWN:
         if event.unicode == '1' or event.unicode == '2' or event.unicode == '3' or event.unicode == '4' or event.unicode == '5' \
                 or event.unicode == '6' or event.unicode == '7' or event.unicode == '8' or event.unicode == '9' or event.unicode == '0' \
                 or event.unicode == '.':
@@ -20,7 +20,7 @@ def give_par(par: object, event, text, name):
             valid = True
             if text == '':
                 return 1
-        elif valid:
+        elif valid and (len(text) <= 5):
             if event.unicode == ',':
                 event.unicode = '.'
             if text == '1':
